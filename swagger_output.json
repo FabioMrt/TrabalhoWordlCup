@@ -1,0 +1,336 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/v1/stadiums": {
+      "get": {
+        "tags": [
+          "Estádos"
+        ],
+        "description": "Endpoint para resgatar os estádios.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "get stadiuns.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "example": [
+                    "nome do estádio"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/v1/games": {
+      "get": {
+        "tags": [
+          "Jogos"
+        ],
+        "description": "Endpoint para resgatar os jogos.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "get game.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "cttzhhcg9"
+                      },
+                      "soccerTeam1": {
+                        "type": "string",
+                        "example": "1"
+                      },
+                      "soccerTeam2": {
+                        "type": "string",
+                        "example": "2"
+                      },
+                      "golsSoccerTeam1": {
+                        "type": "string",
+                        "example": "1"
+                      },
+                      "golsSoccerTeam2": {
+                        "type": "string",
+                        "example": "1"
+                      },
+                      "typeGame": {
+                        "type": "string",
+                        "example": "Final"
+                      },
+                      "stadium": {
+                        "type": "string",
+                        "example": "Estádio Lusail"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/v1/game": {
+      "post": {
+        "tags": [
+          "Jogos"
+        ],
+        "description": "Endpoint para adicionar um novo jogo.",
+        "parameters": [
+          {
+            "name": "newGame",
+            "in": "body",
+            "description": "Informações do jogo.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "soccerTeam1": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "soccerTeam2": {
+                  "type": "string",
+                  "example": "2"
+                },
+                "golsSoccerTeam1": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "golsSoccerTeam2": {
+                  "type": "string",
+                  "example": "1"
+                },
+                "typeGame": {
+                  "type": "string",
+                  "example": "Final"
+                },
+                "stadium": {
+                  "type": "string",
+                  "example": "Estádio Lusail"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Game added with success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/soccerTeams": {
+      "get": {
+        "tags": [
+          "Seleções"
+        ],
+        "description": "Endpoint para resgatar as seleções.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "get soccer teams.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "cttzhhcg9"
+                      },
+                      "country": {
+                        "type": "string",
+                        "example": "Brazil"
+                      },
+                      "trainer": {
+                        "type": "string",
+                        "example": "Titi"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/v1/soccerTeam": {
+      "post": {
+        "tags": [
+          "Seleções"
+        ],
+        "description": "Endpoint para adicionar uma nova seleção.",
+        "parameters": [
+          {
+            "name": "soccerTeam",
+            "in": "body",
+            "description": "Informações da seleção.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "country": {
+                  "type": "string",
+                  "example": "Brazil"
+                },
+                "trainer": {
+                  "type": "string",
+                  "example": "Titi"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Soccer Team added with success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/rating": {
+      "get": {
+        "tags": [
+          "Classificação"
+        ],
+        "description": "Endpoint para resgatar as Classificação.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "get soccer teams.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "cttzhhcg9"
+                      },
+                      "soccerTeam": {
+                        "type": "string",
+                        "example": "Brazil"
+                      },
+                      "gols": {
+                        "type": "string",
+                        "example": "20"
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Classificação"
+        ],
+        "description": "Endpoint para adicionar uma nova classificação.",
+        "parameters": [
+          {
+            "name": "newRating",
+            "in": "body",
+            "description": "Informações da seleção.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rating": {
+                  "type": "string",
+                  "example": "1°"
+                },
+                "soccerTeam": {
+                  "type": "string",
+                  "example": "Brazil"
+                },
+                "gols": {
+                  "type": "string",
+                  "example": "20"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Rating added with success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
